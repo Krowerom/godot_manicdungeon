@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqx4hp8vur7fn"]
+
+[ext_resource type="AudioStream" uid="uid://bx1p7sda0s8f1" path="res://assets/music/Pixel 1.wav" id="1_venui"]
+
+[node name="music_pixel1" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_venui")
+autoplay = true
+bus = &"Music"
+playback_type = 1

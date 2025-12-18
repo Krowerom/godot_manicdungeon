@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk2fl7noipqji"]
+
+[ext_resource type="Script" uid="uid://b265bm2o7c8m" path="res://scripts/ingame.gd" id="1_4g3tu"]
+[ext_resource type="Texture2D" uid="uid://8th7cmh3msoc" path="res://assets/graphics/ui_elements/MenuButton.png" id="2_ae8i0"]
+[ext_resource type="AudioStream" uid="uid://bnbiynieanw1n" path="res://assets/sfx/positive.mp3" id="2_g6k3f"]
+
+[node name="ingame" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_4g3tu")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Positive" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("2_g6k3f")
+
+[node name="Main Menu" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -54.0
+offset_right = 198.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="MainMenu" type="TextureButton" parent="Main Menu"]
+layout_mode = 2
+texture_normal = ExtResource("2_ae8i0")
+
+[node name="Label" type="Label" parent="Main Menu/MainMenu"]
+layout_mode = 0
+offset_right = 406.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Main Menu/MainMenu" to="." method="_on_main_menu_pressed"]

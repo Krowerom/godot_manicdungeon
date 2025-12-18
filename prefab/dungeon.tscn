@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://wr04lvm6vuc6"]
+
+[ext_resource type="Script" uid="uid://bas8ar4yr0c3a" path="res://scripts/dungeon.gd" id="1_oawvy"]
+[ext_resource type="Texture2D" uid="uid://cchrjnops6hi8" path="res://assets/graphics/tiles/Tiles.png" id="2_7ii77"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oawvy"]
+resource_name = "Tilemap"
+texture = ExtResource("2_7ii77")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7ii77"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_oawvy")
+
+[node name="Dungeon" type="Node2D"]
+script = ExtResource("1_oawvy")
+
+[node name="FloorLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_7ii77")
+physics_quadrant_size = 32
+
+[node name="WallLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_7ii77")
+physics_quadrant_size = 32

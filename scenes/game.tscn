@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ee8rhpip7jtw"]
+
+[ext_resource type="PackedScene" uid="uid://wr04lvm6vuc6" path="res://prefab/dungeon.tscn" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bk2fl7noipqji" path="res://prefab/UI/ingame.tscn" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bxcu24ap5ce05" path="res://prefab/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cqx4hp8vur7fn" path="res://prefab/music_pixel1.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="music_pixel1" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-1, -1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ingame" parent="CanvasLayer" instance=ExtResource("1_lnu2h")]
+
+[node name="Dungeon" parent="." instance=ExtResource("1_lbhrr")]
+position = Vector2(528, 80)
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(544, 96)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+position_smoothing_enabled = true

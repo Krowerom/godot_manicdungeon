@@ -1,0 +1,168 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxrufrddv4a5"]
+
+[ext_resource type="Script" uid="uid://b5sdy5417acyg" path="res://scripts/main.gd" id="1_6vv0t"]
+[ext_resource type="AudioStream" uid="uid://bnbiynieanw1n" path="res://assets/sfx/positive.mp3" id="2_1iojk"]
+[ext_resource type="Texture2D" uid="uid://h1bnq3qlh0g6" path="res://assets/graphics/ui_elements/ManicLogo.png" id="2_4r1sm"]
+[ext_resource type="Texture2D" uid="uid://8th7cmh3msoc" path="res://assets/graphics/ui_elements/MenuButton.png" id="2_gy7h7"]
+[ext_resource type="AudioStream" uid="uid://4nm5kt5pyo8n" path="res://assets/sfx/negative.mp3" id="3_0pitv"]
+[ext_resource type="Texture2D" uid="uid://dle7rui7voc2p" path="res://assets/graphics/ui_elements/sound.png" id="3_tkdwu"]
+[ext_resource type="Texture2D" uid="uid://b8nbu78i6r7u5" path="res://assets/graphics/ui_elements/music.png" id="4_hoayk"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6vv0t")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Positive" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("2_1iojk")
+
+[node name="Negative" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_0pitv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 411.0
+offset_bottom = 431.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_4r1sm")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Menu Contents" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons_Sliders" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Play Button" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/Play Button"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_gy7h7")
+
+[node name="Play" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/Play Button/PlayButton"]
+layout_mode = 0
+offset_right = 408.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit Button" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/Quit Button"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_gy7h7")
+
+[node name="Quit" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/Quit Button/QuitButton"]
+layout_mode = 0
+offset_right = 404.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolume" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MasterVolume"]
+layout_mode = 2
+texture = ExtResource("3_tkdwu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Master Volume" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MasterVolume"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Master Volume"
+
+[node name="MasterSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+alignment = 1
+
+[node name="hSlider_Master" type="HSlider" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MasterSlider"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="MusicVolume" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MusicVolume"]
+layout_mode = 2
+texture = ExtResource("4_hoayk")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MusicVolume"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music"
+
+[node name="MusicSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+alignment = 1
+
+[node name="hSlider_Music" type="HSlider" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MusicSlider"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="SFXVolume" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/SFXVolume"]
+layout_mode = 2
+texture = ExtResource("3_tkdwu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SFX" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/SFXVolume"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+
+[node name="SFXSlider" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+layout_mode = 2
+alignment = 1
+
+[node name="hSlider_SFX" type="HSlider" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/SFXSlider"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/Play Button/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/Quit Button/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MasterSlider/hSlider_Master" to="." method="_on_h_slider_master_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/MusicSlider/hSlider_Music" to="." method="_on_h_slider_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/PanelContainer/Menu Contents/Buttons_Sliders/SFXSlider/hSlider_SFX" to="." method="_on_h_slider_sfx_value_changed"]

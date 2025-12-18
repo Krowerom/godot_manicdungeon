@@ -1,0 +1,23 @@
+# Godot-specific
+.import/
+.export/
+*.translation
+
+# Mono / C#
+.mono/
+data_*/
+*.csproj
+*.sln
+
+# Godot caches
+.godot/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor backups
+*.bak
