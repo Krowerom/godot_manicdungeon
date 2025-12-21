@@ -6,6 +6,8 @@ var MasterVolume: float = 0.0
 var MusicVolume: float = 0.0
 var SFXVolume: float = 0.0
 
+var currentLevel: int = 1
+
 func _ready() -> void:
 	load_settings()
 	apply_audio()

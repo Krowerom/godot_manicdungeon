@@ -1,4 +1,5 @@
 extends Node2D
+class_name Dungeon
 
 @export var walk_length: int = 400
 @export var start_position: Vector2i = Vector2i.ZERO
@@ -6,6 +7,7 @@ extends Node2D
 @onready var floor_layer: TileMapLayer = $FloorLayer
 @onready var wall_layer: TileMapLayer = $WallLayer
 @onready var walledge_layer: TileMapLayer = $WallEdgeLayer
+@onready var fog_layer: TileMapLayer = $FogLayer
 
 var floor_tiles := {}
 var rng := RandomNumberGenerator.new()
@@ -139,3 +141,15 @@ func place_exit() -> void:
 		3, #the layer containing the door sprite
 		Vector2i(0,1) #the open door
 	)
+	#set_fog()
+
+func set_fog() -> void:
+	var used_rect: Rect2i = wall_layer.get_used_rect()
+	for y in range(used_rect.position.y -1, used_rect.position.y + used_rect.size.y +1):
+		for x in range(used_rect.position.x -1, used_rect.position.x + used_rect.size.x +1):
+			var cell := Vector2i(x, y)
+			fog_layer.set_cell(
+				cell,
+				0, #the only tile layer
+				Vector2i(1,1) #the fog sprite
+			)
