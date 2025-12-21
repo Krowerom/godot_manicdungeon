@@ -24,9 +24,10 @@ This is the Godot version.
 - WallEdge tilemap
 - Player Prefab
 - Exit Prefab
+- Fog tilemap
+- Defogger
 
 **To Do:**
-- Fog
 - Health (player)
 - Level# (increase chance of escape with each level)
 - Items (potions, scrolls, food)
