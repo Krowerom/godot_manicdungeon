@@ -3,10 +3,11 @@ class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var walkSound: AudioStreamPlayer = $Sounds/Step
+@onready var testingmenu: Control = $"../CanvasLayer/testingame"
 
 const TILE_SIZE := 32
-var MOVE_DURATION := 0.3  # seconds per tile
 const COLLISION_MASK := 1   # wall layer
+var MOVE_DURATION := 0.35  # seconds per tile
 
 var start_position: Vector2
 var target_position: Vector2
@@ -15,13 +16,19 @@ var move_dir := Vector2.ZERO
 var move_timer := 0.0
 
 func _ready() -> void:
+	print(testingmenu)
 	var curSpeed = MOVE_DURATION
-	MOVE_DURATION = 10000 #make it sloooow
+	_setSpeed(10000) #make it sloooow
 	await get_tree().create_timer(0.25).timeout
-	MOVE_DURATION = curSpeed #restore speed
+	_setSpeed(curSpeed) #restore speed
 	global_position = global_position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
 	start_position = global_position
 	target_position = global_position
+	if testingmenu:
+		testingmenu.speed_changed.connect(_setSpeed)
+
+func _setSpeed(speed : float):
+	MOVE_DURATION = speed
 
 func _physics_process(delta: float) -> void:
 	if is_moving:

@@ -141,7 +141,7 @@ func place_exit() -> void:
 		3, #the layer containing the door sprite
 		Vector2i(0,1) #the open door
 	)
-	#set_fog()
+	set_fog()
 
 func set_fog() -> void:
 	var used_rect: Rect2i = wall_layer.get_used_rect()

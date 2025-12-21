@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bxcu24ap5ce05"]
+[gd_scene load_steps=25 format=3 uid="uid://bxcu24ap5ce05"]
 
 [ext_resource type="Script" uid="uid://dh80p1emmlm2r" path="res://scripts/player.gd" id="1_oj046"]
 [ext_resource type="Texture2D" uid="uid://dww03ucptnyxy" path="res://assets/graphics/characters/Krow_Animations.png" id="1_umsav"]
 [ext_resource type="AudioStream" uid="uid://dhkhca6paj1bx" path="res://assets/sfx/step.mp3" id="3_a1o1i"]
+[ext_resource type="PackedScene" uid="uid://bbg6hmdp7l6oa" path="res://prefab/defogger.tscn" id="4_wowq3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oj046"]
 atlas = ExtResource("1_umsav")
@@ -160,7 +161,6 @@ script = ExtResource("1_oj046")
 stream = ExtResource("3_a1o1i")
 pitch_scale = 1.25
 bus = &"SFX"
-parameters/looping = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
@@ -172,3 +172,5 @@ frame_progress = 0.3074237
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oj046")
+
+[node name="Defogger" parent="." instance=ExtResource("4_wowq3")]

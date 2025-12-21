@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbg6hmdp7l6oa"]
+
+[ext_resource type="Script" uid="uid://5al3no0x8f6x" path="res://scripts/defogger.gd" id="1_qjd4b"]
+
+[node name="Defogger" type="Node2D"]
+script = ExtResource("1_qjd4b")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ee8rhpip7jtw"]
+[gd_scene load_steps=6 format=3 uid="uid://ee8rhpip7jtw"]
 
 [ext_resource type="PackedScene" uid="uid://wr04lvm6vuc6" path="res://prefab/dungeon.tscn" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bk2fl7noipqji" path="res://prefab/UI/ingame.tscn" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bxcu24ap5ce05" path="res://prefab/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cqx4hp8vur7fn" path="res://prefab/music_pixel1.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dckuy68temgyl" path="res://prefab/UI/testingame.tscn" id="3_u5sy4"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,6 +12,8 @@
 position = Vector2(-1, -1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="testingame" parent="CanvasLayer" instance=ExtResource("3_u5sy4")]
 
 [node name="ingame" parent="CanvasLayer" instance=ExtResource("1_lnu2h")]
 
