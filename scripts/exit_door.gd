@@ -10,7 +10,7 @@ func _on_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(1.5).timeout
 		body.MOVE_DURATION = curSpeed #restore speed
 		if Settings.currentLevel >= 5 and random + (Settings.currentLevel * 5) > 80:
-			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+			get_tree().change_scene_to_file("res://scenes/escape.tscn")
 			Settings.currentLevel = 1
 		else:
 			Settings.currentLevel += 1

@@ -13,47 +13,66 @@ script = ExtResource("1_f2y1o")
 [node name="Positive" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("2_cpnlg")
 
-[node name="TestSpeed" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 259.0
-offset_bottom = 231.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TestSpeed" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="Speed0" type="Button" parent="TestSpeed"]
+[node name="Speed0" type="Button" parent="VBoxContainer/TestSpeed"]
 layout_mode = 2
 text = "Speed 0"
 
-[node name="Speed1" type="Button" parent="TestSpeed"]
+[node name="Speed1" type="Button" parent="VBoxContainer/TestSpeed"]
 layout_mode = 2
 text = "Speed 1"
 
-[node name="Speed2" type="Button" parent="TestSpeed"]
+[node name="Speed2" type="Button" parent="VBoxContainer/TestSpeed"]
 layout_mode = 2
 text = "Speed 2"
 
-[node name="Speed3" type="Button" parent="TestSpeed"]
+[node name="Speed3" type="Button" parent="VBoxContainer/TestSpeed"]
 layout_mode = 2
 text = "Speed 3"
 
-[node name="Speed4" type="Button" parent="TestSpeed"]
+[node name="Speed4" type="Button" parent="VBoxContainer/TestSpeed"]
 layout_mode = 2
 text = "Speed 4"
 
-[node name="Speed5" type="Button" parent="TestSpeed"]
+[node name="Speed5" type="Button" parent="VBoxContainer/TestSpeed"]
 layout_mode = 2
 text = "Speed 5"
 
-[connection signal="pressed" from="TestSpeed/Speed0" to="." method="_on_speed_0_pressed"]
-[connection signal="pressed" from="TestSpeed/Speed1" to="." method="_on_speed_1_pressed"]
-[connection signal="pressed" from="TestSpeed/Speed2" to="." method="_on_speed_2_pressed"]
-[connection signal="pressed" from="TestSpeed/Speed3" to="." method="_on_speed_3_pressed"]
-[connection signal="pressed" from="TestSpeed/Speed4" to="." method="_on_speed_4_pressed"]
-[connection signal="pressed" from="TestSpeed/Speed5" to="." method="_on_speed_5_pressed"]
+[node name="TestHealth" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Health +5" type="Button" parent="VBoxContainer/TestHealth"]
+layout_mode = 2
+text = "Health +5"
+
+[node name="Health -5" type="Button" parent="VBoxContainer/TestHealth"]
+layout_mode = 2
+text = "Health -5"
+
+[node name="Health +50" type="Button" parent="VBoxContainer/TestHealth"]
+layout_mode = 2
+text = "Health +50"
+
+[node name="Health -50" type="Button" parent="VBoxContainer/TestHealth"]
+layout_mode = 2
+text = "Health -50"
+
+[connection signal="pressed" from="VBoxContainer/TestSpeed/Speed0" to="." method="_on_speed_0_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestSpeed/Speed1" to="." method="_on_speed_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestSpeed/Speed2" to="." method="_on_speed_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestSpeed/Speed3" to="." method="_on_speed_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestSpeed/Speed4" to="." method="_on_speed_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestSpeed/Speed5" to="." method="_on_speed_5_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestHealth/Health +5" to="." method="_on_health_add5_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestHealth/Health -5" to="." method="_on_health_hit5_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestHealth/Health +50" to="." method="_on_health_add50_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestHealth/Health -50" to="." method="_on_health_hit50_pressed"]

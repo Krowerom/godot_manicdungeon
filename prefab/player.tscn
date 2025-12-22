@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxcu24ap5ce05"]
+[gd_scene load_steps=27 format=3 uid="uid://bxcu24ap5ce05"]
 
 [ext_resource type="Script" uid="uid://dh80p1emmlm2r" path="res://scripts/player.gd" id="1_oj046"]
 [ext_resource type="Texture2D" uid="uid://dww03ucptnyxy" path="res://assets/graphics/characters/Krow_Animations.png" id="1_umsav"]
 [ext_resource type="AudioStream" uid="uid://dhkhca6paj1bx" path="res://assets/sfx/step.mp3" id="3_a1o1i"]
 [ext_resource type="PackedScene" uid="uid://bbg6hmdp7l6oa" path="res://prefab/defogger.tscn" id="4_wowq3"]
+[ext_resource type="PackedScene" uid="uid://dbjbgyi1v1mtv" path="res://prefab/health.tscn" id="5_opt6g"]
+[ext_resource type="PackedScene" uid="uid://bhm7m42ik3d7i" path="res://prefab/healthbar.tscn" id="6_fmpo2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oj046"]
 atlas = ExtResource("1_umsav")
@@ -174,3 +176,8 @@ frame_progress = 0.3074237
 shape = SubResource("RectangleShape2D_oj046")
 
 [node name="Defogger" parent="." instance=ExtResource("4_wowq3")]
+
+[node name="Health" parent="." instance=ExtResource("5_opt6g")]
+
+[node name="HealthBar" parent="." instance=ExtResource("6_fmpo2")]
+position = Vector2(-10, 18)

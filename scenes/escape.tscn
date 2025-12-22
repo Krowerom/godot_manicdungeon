@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0kcpkofyww52"]
+
+[ext_resource type="Script" uid="uid://b4wqpvfkbebwp" path="res://scripts/death.gd" id="1_fu77f"]
+[ext_resource type="Texture2D" uid="uid://06im82b43vre" path="res://assets/graphics/ui_elements/Escaped_ChatGPT_1.png" id="2_ig01c"]
+
+[node name="Escape" type="Node2D"]
+script = ExtResource("1_fu77f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = -152.0
+offset_right = 228.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ig01c")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -422.0
+offset_right = 422.0
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.34901962, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "You Escaped!!"
+horizontal_alignment = 1
+vertical_alignment = 1

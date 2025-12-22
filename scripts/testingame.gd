@@ -11,6 +11,7 @@ const WalkSpeed := {
 	5: 0.2
 }
 @onready var positiveSound: AudioStreamPlayer = $Sounds/Positive
+@onready var myhealth: health = get_node("/root/Game/Player/Health")
 
 func _on_speed_0_pressed() -> void:
 	positiveSound.play()
@@ -41,3 +42,15 @@ func _on_speed_5_pressed() -> void:
 	positiveSound.play()
 	print("SetSpeed:",WalkSpeed[5])
 	speed_changed.emit(WalkSpeed[5])
+
+func _on_health_add5_pressed() -> void:
+	myhealth.heal(5)
+
+func _on_health_hit5_pressed() -> void:
+	myhealth.take_damage(5)
+
+func _on_health_add50_pressed() -> void:
+	myhealth.heal(50)
+
+func _on_health_hit50_pressed() -> void:
+	myhealth.take_damage(50)

@@ -15,6 +15,8 @@ var is_moving := false
 var move_dir := Vector2.ZERO
 var move_timer := 0.0
 
+
+
 func _ready() -> void:
 	print(testingmenu)
 	var curSpeed = MOVE_DURATION
