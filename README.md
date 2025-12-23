@@ -39,6 +39,7 @@ This is the Godot version.
 - Treasure Items (gold, map)
 - Unlock door (key)
 - Enemies (slimes, ghosts)
+- Attack script
 - UI (Level, gold collected, health)
 - Escape Scene (needs refinement)
 - Game modes (Normal, Infinite Levels, Weekly Dungeon SpeedRun)
