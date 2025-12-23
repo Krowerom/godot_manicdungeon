@@ -43,6 +43,7 @@ func generate_dungeon() -> void:
 
 	draw_tiles()
 	generate_walls()
+	summon_enemy()
 
 #Floor Tile ID is a constant, as there is only one TileSet used for the floor/walls
 const FLOOR_TILE_ID := 0
@@ -153,3 +154,13 @@ func set_fog() -> void:
 				0, #the only tile layer
 				Vector2i(1,1) #the fog sprite
 			)
+
+var enemy_scene: PackedScene = preload("res://prefab/enemy.tscn")
+func summon_enemy() -> void:
+	var floorcells: Array[Vector2i] = floor_layer.get_used_cells()
+	for cell: Vector2i in floorcells:
+		var randomenemy = randi_range(0,100)
+		if randomenemy <= 10:
+			var enemy := enemy_scene.instantiate()
+			enemy.global_position = floor_layer.map_to_local(cell)
+			add_child(enemy)
