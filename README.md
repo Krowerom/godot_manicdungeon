@@ -28,14 +28,18 @@ This is the Godot version.
 - Defogger
 - Level# (increase chance of escape with each level)
 
-**To Do:**
+**Done:**
 - Health (player)
+- Enemies (skeletons)
+- Escape Scene
+
+**To Do:**
 - Items (potions, scrolls, food)
 - Buffs/Debuffs (walk speed, vision)
 - Treasure Items (gold, map)
 - Unlock door (key)
-- Enemies (skeletons, slimes, ghosts)
+- Enemies (slimes, ghosts)
 - UI (Level, gold collected, health)
-- Escape Scene
+- Escape Scene (needs refinement)
 - Game modes (Normal, Infinite Levels, Weekly Dungeon SpeedRun)
 - Leaderboards (gold collected, number of levels survived, fastest weekly dungeon escape)
