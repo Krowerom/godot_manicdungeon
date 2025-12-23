@@ -8,14 +8,17 @@ class_name Player
 const TILE_SIZE := 32
 const COLLISION_MASK := 1   # wall layer
 var MOVE_DURATION := 0.35  # seconds per tile
-
 var start_position: Vector2
 var target_position: Vector2
 var is_moving := false
 var move_dir := Vector2.ZERO
 var move_timer := 0.0
 
-
+#touchscreen variables
+var touch_start_pos: Vector2
+var touch_current_pos: Vector2
+var touch_active := false
+const SWIPE_DEADZONE := 24.0  # pixels
 
 func _ready() -> void:
 	var curSpeed = MOVE_DURATION
@@ -38,9 +41,39 @@ func _physics_process(delta: float) -> void:
 		walkSound.play()
 		handle_continuous_input()
 
+#added for touchscreen input
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_active = true
+			touch_start_pos = event.position
+			touch_current_pos = event.position
+		else:
+			touch_active = false
+			move_dir = Vector2.ZERO
+			animated_sprite.play("idle")
+	elif event is InputEventScreenDrag and touch_active:
+		touch_current_pos = event.position
+
+#pre-touchscreen version
+#func handle_continuous_input() -> void:
+#	move_dir = Vector2.ZERO
+#	if Input.is_action_pressed("right"):
+#		move_dir = Vector2.RIGHT
+#	elif Input.is_action_pressed("left"):
+#		move_dir = Vector2.LEFT
+#	elif Input.is_action_pressed("up"):
+#		move_dir = Vector2.UP
+#	elif Input.is_action_pressed("down"):
+#		move_dir = Vector2.DOWN
+#	else:
+#		animated_sprite.play("idle")
+#		return
+#	try_start_move(move_dir)
+
 func handle_continuous_input() -> void:
 	move_dir = Vector2.ZERO
-
+	# Keyboard
 	if Input.is_action_pressed("right"):
 		move_dir = Vector2.RIGHT
 	elif Input.is_action_pressed("left"):
@@ -49,24 +82,29 @@ func handle_continuous_input() -> void:
 		move_dir = Vector2.UP
 	elif Input.is_action_pressed("down"):
 		move_dir = Vector2.DOWN
-	else:
+	# Touch (overrides keyboard)
+	elif touch_active:
+		var delta := touch_current_pos - touch_start_pos
+		if delta.length() < SWIPE_DEADZONE:
+			return
+		if abs(delta.x) > abs(delta.y):
+			move_dir = Vector2.RIGHT if delta.x > 0 else Vector2.LEFT
+		else:
+			move_dir = Vector2.DOWN if delta.y > 0 else Vector2.UP
+	if move_dir == Vector2.ZERO:
 		animated_sprite.play("idle")
 		return
-
 	try_start_move(move_dir)
 
 func try_start_move(dir: Vector2) -> void:
 	var new_position = global_position + dir * TILE_SIZE
-
 	# Collision check using PhysicsRayQueryParameters2D
 	var ray = PhysicsRayQueryParameters2D.new()
 	ray.from = global_position
 	ray.to = new_position
 	ray.exclude = [self]
 	ray.collision_mask = COLLISION_MASK
-
 	var collision = get_world_2d().direct_space_state.intersect_ray(ray)
-
 	if collision.size() == 0:  # no collision
 		start_position = global_position
 		target_position = new_position
@@ -79,9 +117,7 @@ func move_towards_target(delta: float) -> void:
 	var t = move_timer / MOVE_DURATION
 	if t > 1.0:
 		t = 1.0
-
 	global_position = start_position + (target_position - start_position) * t
-
 	if t >= 1.0:
 		global_position = target_position
 		is_moving = false
